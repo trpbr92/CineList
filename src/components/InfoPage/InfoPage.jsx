@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -6,10 +7,31 @@ import React from 'react';
 // or even care what the redux state is
 
 function InfoPage() {
+
+  const dispatch = useDispatch();
+  const films = useSelector((store) => store.films);
+
+  useEffect(() => {
+    dispatch({type: 'FETCH_FILMS'});
+  }, []);
+
+
   return (
-    <div className="container">
-      <p>Info Page</p>
-    </div>
+ <main>
+    <h1>Films</h1>
+    <section className="films">
+      {films.map(film => {
+        return (
+          <div key={film.id}>
+            <h3>{film.title}</h3>
+            <img src={film.poster_url} alt={film.title}/>
+            <p>{film.description}</p>
+
+          </div>
+        )
+      })}
+    </section>
+ </main>
   );
 }
 
