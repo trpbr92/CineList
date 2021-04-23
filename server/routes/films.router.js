@@ -5,9 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    const query = `SELECT * FROM "films" ORDER BY "title" ASC;`;
-    pool.query(query)
+router.get('/:search', (req, res) => {
+    const query = `SELECT * FROM "films" WHERE "title" LIKE '%' || $1 || '%';`;
+    console.log('in search', req.params.search);
+    pool.query(query, [req.params.search])
     .then(result => {
         res.send(result.rows);
     })

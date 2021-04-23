@@ -13,14 +13,16 @@ function SearchPage() {
     console.log(event.target.value);
   }
 
-  const searchFilms = (event) => {
-    history.push('/info');
+  const searchFilms = (searchQuery) => {
+    dispatch({type: 'FETCH_FILMS', payload: searchQuery})
+    history.push('/results');
   }
 
   return (
 
     <div className="container">
-      <input type="text" placeholder="Search Films!"onChange={handleChange}/><button onClick={searchFilms}>Search</button>
+      <input type="text" value={searchQuery} placeholder="Search Films!"onChange={handleChange}/>
+      <button onClick={() => searchFilms(searchQuery)}>Search</button>
     </div>
   );
 }

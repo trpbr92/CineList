@@ -20,6 +20,9 @@ import SearchResults from '../SearchResults/SearchResults';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import WatchListPage from '../WatchListPage/WatchListPage';
+import SeenPage from '../SeenPage/SeenPage';
+import FilmProfile from '../FilmProfile/FilmProfile';
 
 import './App.css';
 
@@ -62,7 +65,7 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/results"
           >
             <SearchResults />
             
@@ -73,6 +76,27 @@ function App() {
             path="/search"
           >
             <SearchPage />
+            
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/watch"
+          >
+            <WatchListPage />
+            
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/seen"
+          >
+            <SeenPage />
+            
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/profile"
+          >
+            <FilmProfile />
             
           </ProtectedRoute>
 

@@ -11,14 +11,14 @@ function SearchResults() {
   const dispatch = useDispatch();
   const films = useSelector((store) => store.films);
 
-  useEffect(() => {
-    dispatch({type: 'FETCH_FILMS'});
-  }, []);
+  // useEffect(() => {
+  //   dispatch({type: 'FETCH_FILMS'});
+  // }, []);
 
 
   return (
  <main>
-    <h1>Films</h1>
+    <h1>Search Results:</h1>
     <section className="films">
       {films.map(film => {
         return (
