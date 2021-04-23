@@ -8,7 +8,6 @@ function UserPage() {
   return (
 
     <div className="container">
-      <input type="text" placeholder="Search Films!"/><button>Search</button>
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />

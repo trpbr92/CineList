@@ -15,7 +15,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import SearchPage from '../SearchPage/SearchPage';
+import SearchResults from '../SearchResults/SearchResults';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -63,7 +64,16 @@ function App() {
             exact
             path="/info"
           >
-            <InfoPage />
+            <SearchResults />
+            
+          </ProtectedRoute>
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/search"
+          >
+            <SearchPage />
+            
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

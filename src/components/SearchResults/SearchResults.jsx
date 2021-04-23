@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is
 
-function InfoPage() {
+function SearchResults() {
 
   const dispatch = useDispatch();
   const films = useSelector((store) => store.films);
@@ -35,4 +35,4 @@ function InfoPage() {
   );
 }
 
-export default InfoPage;
+export default SearchResults;
