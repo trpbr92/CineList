@@ -24,7 +24,7 @@ function SearchResults() {
         return (
           <div key={film.id}>
             <h3>{film.title}</h3>
-            <img src={film.poster_url} alt={film.title}/>
+            <img class="card-img" height={300} width={200} src={film.poster_url} alt={film.title}/>
           </div>
         )
       })}
