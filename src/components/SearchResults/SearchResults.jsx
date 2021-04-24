@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
 
 function SearchResults() {
 
   const dispatch = useDispatch();
   const films = useSelector((store) => store.search);
+  const history = useHistory();
 
   // useEffect(() => {
   //   dispatch({type: 'FETCH_FILMS'});
   // }, []);
 
+  const filmProfile = (id) => {
+    dispatch({type: 'FETCH_FILMS', payload: id});
+    console.log('in filmProfile:', id);
+    history.push('/profile');
+  }
 
   return (
  <main>
@@ -24,7 +27,7 @@ function SearchResults() {
         return (
           <div key={film.id}>
             <h3>{film.title}</h3>
-            <img class="card-img" height={300} width={200} src={film.poster_url} alt={film.title}/>
+            <img height={300} width={200} src={film.poster_url} alt={film.title} onClick={()=>filmProfile(film.id)}/>
           </div>
         )
       })}
