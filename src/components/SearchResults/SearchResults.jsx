@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from 'react-redux';
 function SearchResults() {
 
   const dispatch = useDispatch();
-  const films = useSelector((store) => store.films);
+  const films = useSelector((store) => store.search);
 
   // useEffect(() => {
   //   dispatch({type: 'FETCH_FILMS'});

@@ -1,5 +1,4 @@
 import {React, useState} from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
@@ -7,7 +6,6 @@ function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
-  
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
@@ -16,6 +14,7 @@ function SearchPage() {
 
   const searchFilms = (searchQuery) => {
     dispatch({type: 'FETCH_SEARCH_SAGA', payload: searchQuery})
+    setSearchQuery('');
     history.push('/results');
   }
 
