@@ -32,9 +32,9 @@ function Nav() {
             <Link className="navLink" to="/search">
                 Search
             </Link>
-            <Link className="navLink" to="/results">
+            {/* <Link className="navLink" to="/results">
               Search Results
-            </Link>
+            </Link> */}
             <Link className="navLink" to="/watch">
               Watchlist
             </Link>

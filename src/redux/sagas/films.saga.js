@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import { actionChannel, put, takeEvery } from 'redux-saga/effects';
 
 function* fetchAllFilms() {
     //get all films for the db

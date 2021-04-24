@@ -24,6 +24,7 @@ function SearchPage() {
       <input type="text" value={searchQuery} placeholder="Search Films!"onChange={handleChange}/>
       <button onClick={() => searchFilms(searchQuery)}>Search</button>
     </div>
+      
   );
 }
 
