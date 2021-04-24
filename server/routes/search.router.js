@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/:search', (req, res) => {
-    const query = `SELECT * FROM "films" WHERE "title" LIKE '%' || $1 || '%';`;
+    const query = `SELECT * FROM "films" WHERE UPPER("title") LIKE UPPER( '%' || $1 || '%');`;
     console.log('in search', req.params.search);
     pool.query(query, [req.params.search])
     .then(result => {
