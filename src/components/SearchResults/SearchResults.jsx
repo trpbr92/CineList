@@ -14,9 +14,9 @@ function SearchResults() {
   // }, []);
 
   const filmProfile = (id) => {
-    dispatch({type: 'FETCH_FILMS', payload: id});
+    //dispatch({type: 'FETCH_PROFILE', payload: id});
     console.log('in filmProfile:', id);
-    history.push('/profile');
+    history.push(`/profile/${id}`);
   }
 
   return (

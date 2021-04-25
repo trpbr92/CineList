@@ -94,12 +94,11 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute
             exact
-            path="/profile"
+            path="/profile/:id"
           >
             <FilmProfile />
             
           </ProtectedRoute>
-
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}

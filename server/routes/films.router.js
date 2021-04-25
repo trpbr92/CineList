@@ -17,6 +17,23 @@ router.get('/', (req, res) => {
     })
 });
 
+//GET route for getting individual film profile
 
+
+router.get('/:filmId', ( req, res )=>{
+    filmId = req.params["filmId"]
+    console.log( 'in film details GET', filmId );
+    //need movie description from movies table and genres from genre table
+    //join statement in query
+    const queryText = `SELECT * FROM "films" WHERE id = $1;`;
+    pool.query( queryText, [ filmId ] )
+    .then( ( results )=>{
+      res.send( results.rows );
+    })
+    .catch ( ( err )=>{
+      console.log( 'err in movieId GET', err );
+      res.sendStatus( 500 );
+    })
+  })
 
 module.exports = router;
