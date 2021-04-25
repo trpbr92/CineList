@@ -16,16 +16,31 @@ function FilmProfile(){
     dispatch({type: 'FETCH_PROFILE', payload: Number(filmID)});
   }, []);
 
-console.log('merp');
+  const toWatchList = () => {
+      history.push('/watch');
+  }
+
+  const toSeen = () => {
+      history.push('/seen');
+  }
+
+  const backToResults = () => {
+      history.push('/results');
+  }
+
     return(
         <>
-        <h1>Film Profile</h1>
         <div>
-                <h4>
+        <button onClick={backToResults}>Back to Results</button>
+                <h1>
                     {profile.title}
-                </h4>
+                </h1>
                     <img height={300} width={200} src={profile.poster_url} alt={profile.title}/>
                     <p>{profile.description}</p>
+                    <button onClick={toWatchList}>Add to Watchlist</button>
+                    <button onClick={toSeen}>Add to Seen</button>
+
+
              
         </div>
         </>
