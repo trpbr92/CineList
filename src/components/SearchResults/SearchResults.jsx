@@ -1,27 +1,24 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 function SearchResults() {
 
-  const dispatch = useDispatch();
   const films = useSelector((store) => store.search);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   dispatch({type: 'FETCH_FILMS'});
-  // }, []);
-
   const filmProfile = (id) => {
-    //dispatch({type: 'FETCH_PROFILE', payload: id});
     console.log('in filmProfile:', id);
     history.push(`/profile/${id}`);
   }
 
   return (
  <main>
+   <SearchBar />
     <h1>Search Results:</h1>
+    <p>You searched for:</p>
     <section className="films">
       {films.map(film => {
         return (

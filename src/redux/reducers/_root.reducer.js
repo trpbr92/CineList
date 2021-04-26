@@ -4,6 +4,7 @@ import user from './user.reducer';
 import films from './films.reducer';
 import search from './search.reducer';
 import profile from './profile.reducer';
+import userlists from './userlists.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   films,
   search,
-  profile
+  profile,
+  userlists
 });
 
 export default rootReducer;
