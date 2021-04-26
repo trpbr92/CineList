@@ -1,19 +1,19 @@
 import axios from 'axios';
 import { actionChannel, put, takeEvery } from 'redux-saga/effects';
 
-function* fetchUserLists() {
+function* fetchwatchlist() {
     //get all films for the db
     try {
-        const lists = yield axios.get('api/userlists');
+        const lists = yield axios.get('api/watchlist');
         console.log('get all:', lists.data);
         yield put({type: 'SET_USER_LISTS', payload: lists.data});
     } catch {
-        console.log('ERROR in get userlists');
+        console.log('ERROR in get watchlist');
     }
 }
 
-function* userListsSaga() {
-    yield takeEvery ('FETCH_USER_LISTS', fetchUserLists);
+function* watchlistSaga() {
+    yield takeEvery ('FETCH_USER_LISTS', fetchwatchlist);
 }
 
-export default userListsSaga;
+export default watchlistSaga;

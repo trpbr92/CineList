@@ -17,11 +17,11 @@ function FilmProfile(){
   }, []);
 
   const toWatchList = () => {
-      history.push('/watch');
+     alert('Added to Watchlist.');
   }
 
   const toSeen = () => {
-      history.push('/seen');
+      alert ('added to Seen.');
   }
 
   const backToResults = () => {

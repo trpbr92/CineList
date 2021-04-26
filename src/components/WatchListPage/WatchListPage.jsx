@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 function WatchListPage(){
 const dispatch = useDispatch();
 const history = useHistory();
-const lists = useSelector(store => store.userlists);
+const lists = useSelector(store => store.watchlist);
 
     useEffect(() => {
         dispatch({type: 'FETCH_USER_LISTS'});
@@ -17,6 +17,18 @@ const lists = useSelector(store => store.userlists);
     //       console.log('watchListPage to filmProfile');
     //       history.push(`/profile/${id}`);
     //   }
+
+
+      const addToSeen = () => {
+        console.log('in add to seen');
+        alert('Added to Seen.');
+      }
+
+      const deleteFilm = (id) => {
+        console.log('in deleteFilm', id);
+        dispatch({type: 'DELETE_FILM', payload: id});
+        dispatch({type: 'FETCH_USER_LISTS'});
+      }
 
     return(
 
@@ -31,7 +43,7 @@ const lists = useSelector(store => store.userlists);
           <div key={list.id}>
             <h3>{list.title}</h3>
             <img height={300} width={200} src={list.poster_url} alt={list.title} onClick={()=>filmProfile(list.id)}/>
-           <p><button>Add To Seen</button> <button>Delete</button></p>
+           <p><button onClick={addToSeen}>Add To Seen</button> <button onClick={()=>deleteFilm( list.id )}>Remove</button></p>
            
           </div>
         )
