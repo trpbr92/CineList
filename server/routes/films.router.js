@@ -36,15 +36,17 @@ router.get('/:filmId', ( req, res )=>{
     })
   })
 
-//   router.delete('/:id', (req, res) => {
-//     console.log('in DELETE:', req.params);
-//     let queryString = `DELETE FROM "userlists" WHERE "id"=$1;`;
-//     pool.query(queryString, [id]).then((results) => {
-//         res.sendStatus(200);
-//     }).catch((err) => {
-//         console.log(err);
-//         res.sendStatus(500);
-//     })
-// })
+router.post('/', (req, res) => {
+  let user_id = req.body.user_id;
+  let film_id = req.body.film_id;
+  console.log('in add to watchlist POST:', user_id, film_id);
+  queryText = `INSERT INTO "userlists" ("user_id", "film_id") VALUES ($1, $2);`;
+  pool.query( queryText [user_id, film_id]).then((results) => {
+    res.sendStatus(200);
+  }).catch ((error) => {
+    console.log('error in POST');
+    res.sendStatus(500);
+  })
+})
 
 module.exports = router;

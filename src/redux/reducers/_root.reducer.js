@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import films from './films.reducer';
 import search from './search.reducer';
 import profile from './profile.reducer';
 import watchlist from './watchlist.reducer';
-import seen from './seen.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,11 +14,9 @@ import seen from './seen.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  //films,
   search,
   profile,
   watchlist,
-  seen
 });
 
 export default rootReducer;
