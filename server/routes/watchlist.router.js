@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     console.log('in DELETE:', req.params);
-    let id = req.params.id
     let queryString = `DELETE FROM "userlists" WHERE "id"=$1;`;
     pool.query(queryString, [req.params.id]).then((results) => {
         res.sendStatus(200);
