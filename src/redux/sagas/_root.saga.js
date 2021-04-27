@@ -8,6 +8,7 @@ import profileSaga from './profile.saga';
 import watchlistSaga from './watchlist.saga';
 import deleteSaga from './delete.saga';
 import seenSaga from './seen.saga';
+import addSeenSaga from './addseen.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -26,6 +27,7 @@ export default function* rootSaga() {
     profileSaga(),
     watchlistSaga(),
     deleteSaga(),
-    seenSaga()
+    seenSaga(),
+    addSeenSaga()
   ]);
 }

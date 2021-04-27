@@ -21,4 +21,15 @@ router.get('/', (req, res) => {
 });
 
 
+// router.put('/', (req, res) => {
+//     console.log('in PUT for seen:', req.params);
+//     let queryText = `UPDATE "userlists" SET "seen" = TRUE WHERE "id" =$1;`;
+//     pool.query(queryText, [req.params.id]).then((results) => {
+//       res.sendStatus(200);
+//     }).catch((error) => {
+//       console.log('error in PUT');
+//     })
+//   })  
+  
+
 module.exports = router;

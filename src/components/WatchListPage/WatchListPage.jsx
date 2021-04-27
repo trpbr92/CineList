@@ -19,9 +19,9 @@ const lists = useSelector(store => store.watchlist);
     //   }
 
 
-      const addToSeen = () => {
+      const addToSeen = (id) => {
         console.log('in add to seen');
-        alert('Added to Seen.');
+        dispatch({type: 'SEEN_TRUE', payload: id})
       }
 
       const deleteFilm = (id) => {
@@ -45,7 +45,7 @@ const lists = useSelector(store => store.watchlist);
           <div key={list.id}>
             <h3>{list.title}</h3>
             <img height={300} width={200} src={list.poster_url} alt={list.title} onClick={()=>filmProfile(list.id)}/>
-           <p><button onClick={addToSeen}>Add To Seen</button> <button onClick={()=>deleteFilm( list.id )}>Remove</button></p>
+           <p><button onClick={()=>addToSeen(list.id)}>Add To Seen</button> <button onClick={()=>deleteFilm( list.id )}>Remove</button></p>
            
           </div>
         )
