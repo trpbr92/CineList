@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const query = 
-    `SELECT "user".id, "films".title, "films".description, "films".poster_url, "userlists".rating, "userlists".seen 
+    `SELECT "userlists".id, "films".title, "films".description, "films".poster_url, "userlists".rating, "userlists".seen, "user".id AS "user_id" 
     FROM "userlists"
     JOIN "user" ON "user".id = "userlists".user_id
     JOIN "films" ON "films".id = "userlists".film_id;`;
@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     console.log('in DELETE:', req.params);
+    let id = req.params.id
     let queryString = `DELETE FROM "userlists" WHERE "id"=$1;`;
     pool.query(queryString, [req.params.id]).then((results) => {
         res.sendStatus(200);
