@@ -5,6 +5,7 @@ import films from './films.reducer';
 import search from './search.reducer';
 import profile from './profile.reducer';
 import watchlist from './watchlist.reducer';
+import seen from './seen.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   //films,
   search,
   profile,
-  watchlist
+  watchlist,
+  seen
 });
 
 export default rootReducer;

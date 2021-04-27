@@ -7,10 +7,10 @@ import {useDispatch, useSelector} from 'react-redux';
 function SeenPage(){
 const dispatch = useDispatch();
 const history = useHistory();
-const seen = useSelector(store => store.watchlist);
+const seen = useSelector(store => store.seen);
 const [rating, setRating] = useState('');
     useEffect(() => {
-        dispatch({type: 'FETCH_USER_LISTS'});
+        dispatch({type: 'FETCH_SEEN'});
       }, []);
 
     //   const filmProfile = (id) => {
@@ -30,7 +30,6 @@ const [rating, setRating] = useState('');
         <main>
         <h1>Seen</h1>
       
-                    {/* <h3>{JSON.stringify(lists)}</h3> */}
                         <section className="films">
       {seen.map(seen => {
         return (

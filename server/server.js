@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const filmsRouter = require('./routes/films.router');
 const searchRouter = require('./routes/search.router');
 const watchlistRouter = require('./routes/watchlist.router');
+const seenRouter = require('./routes/seen.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ app.use('/api/user', userRouter);
 app.use('/api/films', filmsRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/watchlist', watchlistRouter);
+app.use('/api/seen', seenRouter);
 
 // Serve static files
 app.use(express.static('build'));
