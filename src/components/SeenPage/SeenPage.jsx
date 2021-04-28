@@ -18,11 +18,15 @@ const [rating, setRating] = useState('');
           history.push(`/profile/${id}`);
       }
 
-    const rateFilm = (event) => {
+      const rateFilm = (event) => {
         setRating(event.target.value);
         console.log(event.target.value);
-        alert('Rating submitted.');
-    }
+      }
+
+      const removeFromSeen = (id) => {
+      console.log('in remove from seen');
+      dispatch({type: 'SEEN_FALSE', payload: id})
+      }
 
     return(
 
@@ -48,7 +52,7 @@ const [rating, setRating] = useState('');
             </select>
             </p>
             <p>Your Rating: {seen.rating}/5</p>
-           <p><button>Remove</button></p>
+           <p><button onClick={()=>removeFromSeen(seen.id)}>Remove</button></p>
            
           </div>
         )

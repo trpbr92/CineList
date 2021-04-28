@@ -10,8 +10,20 @@ function* deleteFilm (action){
     }
 }
 
+function* removeFromSeenList(action) {
+    console.log('remove seen SAGA:', action);
+    try {
+        yield axios.put('api/seen/' + action.payload);
+        yield put({type: 'FETCH_SEEN'});
+    } catch (error) {
+        console.log('ERROR in get seen');
+    }
+}
+
+
 function* deleteSaga(){
     yield takeLatest('DELETE_FILM', deleteFilm);
+    yield takeLatest('SEEN_FALSE', removeFromSeenList);
 }
 
 export default deleteSaga;
