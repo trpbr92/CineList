@@ -12,8 +12,18 @@ function* fetchProfile(action) {
     }
 }
 
+function* addToWatchlist(action) {
+    try{
+        yield axios.post('/api/films', action.payload);
+        console.log('in addToWatchlist saga POST');
+    } catch (error) {
+        console.log('addToWatchlist saga POST ERROR', error);
+    }
+}
+
 function* profileSaga() {
     yield takeEvery ('FETCH_PROFILE', fetchProfile);
+    yield takeEvery ('ADD_TO_WATCHLIST', addToWatchlist);
 }
 
 export default profileSaga;

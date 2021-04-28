@@ -37,14 +37,12 @@ router.get('/:filmId', ( req, res )=>{
   })
 
 router.post('/', (req, res) => {
-  let user_id = req.body.user_id;
-  let film_id = req.body.film_id;
-  console.log('in add to watchlist POST:', user_id, film_id);
+  console.log(req.body);
   queryText = `INSERT INTO "userlists" ("user_id", "film_id") VALUES ($1, $2);`;
-  pool.query( queryText [user_id, film_id]).then((results) => {
-    res.sendStatus(200);
-  }).catch ((error) => {
-    console.log('error in POST');
+  pool.query( queryText, [req.body.userId, req.body.filmID]).then((results) => {
+    res.sendStatus(201);
+  }).catch ((err) => {
+    console.log('error in POST', err);
     res.sendStatus(500);
   })
 })

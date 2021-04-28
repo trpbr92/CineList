@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 function FilmProfile(){
     const profile = useSelector((store) => {return store.profile});
+    const userId = useSelector((store) => {return store.user});
     const history = useHistory();
     const dispatch = useDispatch();
     const params = useParams();
@@ -16,8 +17,13 @@ function FilmProfile(){
     dispatch({type: 'FETCH_PROFILE', payload: Number(filmID)});
   }, []);
 
-  const toWatchList = () => {
-     alert('Added to Watchlist.');
+  const toWatchList = (film) => {
+      film = {
+        userId: userId.id, 
+        filmID: filmID 
+      }
+      dispatch({ type: 'ADD_TO_WATCHLIST', payload: film})
+
   }
 
   const toSeen = () => {
@@ -37,7 +43,7 @@ function FilmProfile(){
                 </h1>
                     <img height={300} width={200} src={profile.poster_url} alt={profile.title}/>
                     <p>{profile.description}</p>
-                    <button onClick={toWatchList}>Add to Watchlist</button>
+                    <button onClick={()=>toWatchList(profile.id)}>Add to Watchlist</button>
                     <button onClick={toSeen}>Add to Seen</button>
 
 

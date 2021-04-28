@@ -13,10 +13,10 @@ const [rating, setRating] = useState('');
         dispatch({type: 'FETCH_SEEN'});
       }, []);
 
-    //   const filmProfile = (id) => {
-    //       console.log('watchListPage to filmProfile');
-    //       history.push(`/profile/${id}`);
-    //   }
+      const filmProfile = (id) => {
+          console.log('watchListPage to filmProfile');
+          history.push(`/profile/${id}`);
+      }
 
     const rateFilm = (event) => {
         setRating(event.target.value);

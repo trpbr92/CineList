@@ -4,6 +4,7 @@ import user from './user.reducer';
 import search from './search.reducer';
 import profile from './profile.reducer';
 import watchlist from './watchlist.reducer';
+import seen from './seen.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   search,
   profile,
   watchlist,
+  seen
 });
 
 export default rootReducer;
