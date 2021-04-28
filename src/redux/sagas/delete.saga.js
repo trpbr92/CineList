@@ -11,7 +11,7 @@ function* deleteFilm (action){
 }
 
 function* removeFromSeenList(action) {
-    console.log('remove seen SAGA:', action);
+    console.log('remove seen SAGA:', action.payload);
     try {
         yield axios.put('api/seen/' + action.payload);
         yield put({type: 'FETCH_SEEN'});
