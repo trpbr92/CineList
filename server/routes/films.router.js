@@ -47,4 +47,15 @@ router.post('/', (req, res) => {
   })
 })
 
+router.put('/', (req, res) => {
+  console.log('in PUT for rating:', req.body);
+  const number = Number.parseInt(req.body.rating);
+  let queryText = `UPDATE "userlists" SET "rating" = ($1) WHERE "id"= ($2);`;
+  pool.query(queryText, [number ,req.body.id]).then((results) => {
+    res.sendStatus(200);
+  }).catch((error) => {
+    console.log('error in PUT rating');
+  })
+})  
+
 module.exports = router;

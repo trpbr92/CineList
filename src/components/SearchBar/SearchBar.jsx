@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 
+
 function SearchBar() {
     const [searchQuery, setSearchQuery] = useState('');
     const dispatch = useDispatch();

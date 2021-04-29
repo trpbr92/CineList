@@ -24,7 +24,6 @@ function* fetchSeenList() {
 }
 
 function* addToSeenList(action) {
-    //get all films for the db
     console.log('add seen SAGA:', action);
     try {
         yield axios.put('api/watchlist/' + action.payload);
@@ -34,10 +33,21 @@ function* addToSeenList(action) {
     }
 }
 
+function* addRating(action) {
+    console.log('in addRating saga PUT:', action);
+    try{
+        yield axios.put('/api/films', action.payload);
+        yield put({type: 'FETCH_SEEN'});
+    } catch (error) {
+        console.log('addRating saga PUT ERROR', error);
+    }
+}
+
 function* watchlistSaga() {
     yield takeEvery ('FETCH_USER_LISTS', fetchwatchlist);
     yield takeEvery ('FETCH_SEEN', fetchSeenList);
     yield takeEvery ('SEEN_TRUE', addToSeenList);
+    yield takeEvery ('ADD_RATING', addRating);
 
 }
 
