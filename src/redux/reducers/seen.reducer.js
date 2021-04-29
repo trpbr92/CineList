@@ -7,6 +7,4 @@ const seenReducer = (state = [], action) => {
     }
 }
 
- 
-
 export default seenReducer;

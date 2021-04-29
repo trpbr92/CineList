@@ -1,8 +1,8 @@
 import {React} from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 
-function SearchPage() {
 
+function SearchPage() {
 
   return (
 <SearchBar />

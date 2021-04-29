@@ -45,9 +45,6 @@ function FilmProfile(){
                     <p>{profile.description}</p>
                     <button onClick={()=>toWatchList(profile.id)}>Add to Watchlist</button>
                     <button onClick={toSeen}>Add to Seen</button>
-
-
-             
         </div>
         </>
     )

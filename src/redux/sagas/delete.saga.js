@@ -20,7 +20,6 @@ function* removeFromSeenList(action) {
     }
 }
 
-
 function* deleteSaga(){
     yield takeLatest('DELETE_FILM', deleteFilm);
     yield takeLatest('SEEN_FALSE', removeFromSeenList);

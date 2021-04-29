@@ -7,6 +7,4 @@ const watchlistReducer = (state = [], action) => {
     }
 }
 
- 
-
 export default watchlistReducer;

@@ -8,20 +8,18 @@ function WatchListPage(){
 const dispatch = useDispatch();
 const history = useHistory();
 const lists = useSelector(store => store.watchlist);
+const [hideFilm, setHideFilm] = useState (false);
 
     useEffect(() => {
         dispatch({type: 'FETCH_USER_LISTS'});
       }, []);
 
-    //   const filmProfile = (id) => {
-    //       console.log('watchListPage to filmProfile');
-    //       history.push(`/profile/${id}`);
-    //   }
-
 
       const addToSeen = (id) => {
         console.log('in add to seen');
         dispatch({type: 'SEEN_TRUE', payload: id})
+        setHideFilm(!hideFilm);
+        console.log('hide film:', hideFilm);
       }
 
       const deleteFilm = (id) => {
@@ -29,8 +27,6 @@ const lists = useSelector(store => store.watchlist);
         dispatch({type: 'DELETE_FILM', payload: id});
         dispatch({type: 'FETCH_USER_LISTS'});
       }
-
-
 
     return(
 

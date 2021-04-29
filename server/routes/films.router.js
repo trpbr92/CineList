@@ -2,25 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// /**
-//  * GET route template
-//  */
-// router.get('/', (req, res) => {
-//     const query = `SELECT * FROM "films" ORDER BY "title" ASC;`;
-//     pool.query(query)
-//     .then(result => {
-//         res.send(result.rows);
-//     })
-//     .catch(err => {
-//         console.log('ERROR in GET films', err);
-//         res.sendStatus(500)
-//     })
-// });
-
-//GET route for getting individual film profile
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
-router.get('/:filmId', ( req, res )=>{
+router.get('/:filmId', rejectUnauthenticated, ( req, res )=>{
     filmId = req.params["filmId"]
     console.log( 'in film details GET', filmId );
     //need movie description from movies table and genres from genre table
@@ -36,7 +23,7 @@ router.get('/:filmId', ( req, res )=>{
     })
   })
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   queryText = `INSERT INTO "userlists" ("user_id", "film_id") VALUES ($1, $2);`;
   pool.query( queryText, [req.body.userId, req.body.filmID]).then((results) => {
@@ -47,7 +34,7 @@ router.post('/', (req, res) => {
   })
 })
 
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
   console.log('in PUT for rating:', req.body);
   const number = Number.parseInt(req.body.rating);
   let queryText = `UPDATE "userlists" SET "rating" = ($1) WHERE "id"= ($2);`;

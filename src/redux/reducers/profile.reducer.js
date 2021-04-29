@@ -7,6 +7,4 @@ const profileReducer = (state = {}, action) => {
     }
 }
 
- 
-
-export default profileReducer;
+ export default profileReducer;

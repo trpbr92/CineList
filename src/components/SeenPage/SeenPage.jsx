@@ -35,8 +35,7 @@ const seen = useSelector(store => store.seen);
         <>
         <main>
         <h1>Seen</h1>
-      
-                        <section className="films">
+      <section className="films">
       {seen.map(seen => {
         return (
           <div key={seen.id}>
