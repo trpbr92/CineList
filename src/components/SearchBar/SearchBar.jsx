@@ -10,7 +10,13 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
+      left: '85px',
     },
+  button: {
+    margin: theme.spacing(1),
+
+
+  },
   },
 }));
 
@@ -34,7 +40,7 @@ function SearchBar() {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField id="standard-basic" value={searchQuery} label="Search for films!" onChange={handleChange}/>
-      <Button variant="contained" color="primary" onClick={() => searchFilms(searchQuery)}>Search</Button>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => searchFilms(searchQuery)}>Search</Button>
     </form>      
 
   );

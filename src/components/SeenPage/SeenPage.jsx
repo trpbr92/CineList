@@ -6,11 +6,26 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
+import './SeenPage.css';
 
 
 const useStyles = makeStyles((theme) => ({
+  deleteButton: {
+      selectEmpty: {
+    marginTop: theme.spacing(1),
+  },
+  },
+  formControl: {
+    minWidth: 75,
+  },
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+
   },
 }));
 
@@ -53,19 +68,21 @@ function SeenPage(){
             <h3>{seen.title}</h3>
             <img height={300} width={200} src={seen.poster_url} alt={seen.title} onClick={()=>filmProfile(seen.id)}/>
             <p>
-            <label for="rating">Rate Film:</label>
-                <select onChange={(event)=>setRating(event.target.value)} id="rating">
-                <option>Rating:</option>
-                <option value= {1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-            </select>
-            <Button variant="contained" color="primary" size="small" onClick={()=>rateFilm(seen.id)}>Rate</Button>
+            <FormControl className={classes.formControl}>
+            <InputLabel id="rating">Rating</InputLabel>
+                <Select labelId="rating" onChange={(event)=>setRating(event.target.value)} id="rating">
+                <MenuItem value= {1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+            </Select>
+            </FormControl>
+            <Button variant="contained" color="primary" size="small" className={classes.button} onClick={()=>rateFilm(seen.id)}>Rate</Button>
+            <Button variant="contained" color="secondary"  className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}></Button>
             </p>
             <p>Your Rating: {seen.rating}/5</p>
-           <p><Button variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button></p>
+           {/* <p><Button variant="contained" color="secondary" className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button></p> */}
            
           </div>
         )
