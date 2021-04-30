@@ -2,12 +2,23 @@ import react, {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom'
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Icon from '@material-ui/core/Icon';
 
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 function SeenPage(){
-const dispatch = useDispatch();
-const history = useHistory();
-const seen = useSelector(store => store.seen);
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const seen = useSelector(store => store.seen);
     useEffect(() => {
         dispatch({type: 'FETCH_SEEN'});
       }, []);
@@ -51,10 +62,10 @@ const seen = useSelector(store => store.seen);
                 <option value={4}>4</option>
                 <option value={5}>5</option>
             </select>
-            <button onClick={()=>rateFilm(seen.id)}>Rate</button>
+            <Button variant="contained" color="primary" size="small" onClick={()=>rateFilm(seen.id)}>Rate</Button>
             </p>
             <p>Your Rating: {seen.rating}/5</p>
-           <p><button onClick={()=>removeFromSeen(seen.id)}>Remove</button></p>
+           <p><Button variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button></p>
            
           </div>
         )

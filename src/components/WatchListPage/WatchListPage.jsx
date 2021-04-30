@@ -2,9 +2,20 @@ import react, {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom'
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Icon from '@material-ui/core/Icon';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 
 function WatchListPage(){
+const classes = useStyles();
 const dispatch = useDispatch();
 const history = useHistory();
 const lists = useSelector(store => store.watchlist);
@@ -41,8 +52,8 @@ const [hideFilm, setHideFilm] = useState (false);
           <div key={list.id}>
             <h3>{list.title}</h3>
             <img height={300} width={200} src={list.poster_url} alt={list.title} onClick={()=>filmProfile(list.id)}/>
-           <p><button onClick={()=>addToSeen(list.id)}>Add To Seen</button> <button onClick={()=>deleteFilm( list.id )}>Remove</button></p>
-           
+            <p><Button variant="contained" color="primary" onClick={()=>addToSeen(list.id)}>Add To Seen</Button> 
+            <Button variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />} onClick={()=>deleteFilm( list.id )}>Remove</Button></p>
           </div>
         )
       })}

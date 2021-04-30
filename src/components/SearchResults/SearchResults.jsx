@@ -18,7 +18,6 @@ function SearchResults() {
  <main>
    <SearchBar />
     <h1>Search Results:</h1>
-    <p>You searched for:</p>
     <section className="films">
       {films.map(film => {
         return (
