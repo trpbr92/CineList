@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
-      left: '85px',
     },
   button: {
     margin: theme.spacing(1),

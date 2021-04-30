@@ -52,8 +52,8 @@ const [hideFilm, setHideFilm] = useState (false);
           <div key={list.id}>
             <h3>{list.title}</h3>
             <img height={300} width={200} src={list.poster_url} alt={list.title} onClick={()=>filmProfile(list.id)}/>
-            <p><Button variant="contained" color="primary" onClick={()=>addToSeen(list.id)}>Add To Seen</Button> 
-            <Button variant="contained" color="secondary" className={classes.button} startIcon={<DeleteIcon />} onClick={()=>deleteFilm( list.id )}>Remove</Button></p>
+            <div><Button variant="contained" color="primary" className={classes.button} onClick={()=>addToSeen(list.id)}>Add To Seen</Button></div> 
+           <div><Button variant="contained" color="secondary"  startIcon={<DeleteIcon />} onClick={()=>deleteFilm( list.id )}>Remove</Button></div>
           </div>
         )
       })}

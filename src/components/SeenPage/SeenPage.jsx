@@ -67,6 +67,8 @@ function SeenPage(){
           <div key={seen.id}>
             <h3>{seen.title}</h3>
             <img height={300} width={200} src={seen.poster_url} alt={seen.title} onClick={()=>filmProfile(seen.id)}/>
+            <p>Your Rating: {seen.rating}/5</p>
+
             <p>
             <FormControl className={classes.formControl}>
             <InputLabel id="rating">Rating</InputLabel>
@@ -78,12 +80,9 @@ function SeenPage(){
                 <MenuItem value={5}>5</MenuItem>
             </Select>
             </FormControl>
-            <Button variant="contained" color="primary" size="small" className={classes.button} onClick={()=>rateFilm(seen.id)}>Rate</Button>
-            <Button variant="contained" color="secondary"  className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}></Button>
-            </p>
-            <p>Your Rating: {seen.rating}/5</p>
-           {/* <p><Button variant="contained" color="secondary" className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button></p> */}
-           
+            <div><Button variant="contained" color="primary"  className={classes.button} onClick={()=>rateFilm(seen.id)}>Rate</Button></div>
+            <Button variant="contained" color="secondary"  className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button>
+            </p>           
           </div>
         )
       })}
