@@ -47,7 +47,6 @@ const [hideFilm, setHideFilm] = useState (false);
 
       const deleteFilm = (id) => {
         console.log('in deleteFilm', id);
-        setOpen(true);
         dispatch({type: 'DELETE_FILM', payload: id});
         dispatch({type: 'FETCH_USER_LISTS'});
       }
@@ -72,17 +71,13 @@ const [hideFilm, setHideFilm] = useState (false);
             <h3>{list.title}</h3>
             <img height={300} width={200} src={list.poster_url} alt={list.title} onClick={()=>filmProfile(list.id)}/>
             <div><Button variant="contained" color="primary" className={classes.button} onClick={()=>addToSeen(list.id)}>Add To Seen</Button>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
                     Added to Seen!
                    </Alert>
                   </Snackbar></div> 
            <div><Button variant="contained" color="secondary"  startIcon={<DeleteIcon />} onClick={()=>deleteFilm( list.id )}>Remove</Button>
-           <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="error">
-                    Film Removed!
-                   </Alert>
-                  </Snackbar></div>
+           </div>
           </div>
         )
       })}

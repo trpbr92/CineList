@@ -5,16 +5,26 @@ import {useDispatch, useSelector} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Icon from '@material-ui/core/Icon';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import './SeenPage.css';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
   deleteButton: {
       selectEmpty: {
     marginTop: theme.spacing(1),
@@ -31,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SeenPage(){
   const classes = useStyles();
+  const [open, setOpen] = react.useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const seen = useSelector(store => store.seen);
@@ -53,9 +64,17 @@ function SeenPage(){
 
       const removeFromSeen = (id) => {
       console.log('in remove from seen');
+      setOpen(true);
       dispatch({type: 'SEEN_FALSE', payload: id})
       }
 
+      const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
     return(
 
         <>
@@ -81,6 +100,11 @@ function SeenPage(){
             </FormControl>
             <div><Button variant="contained" color="primary"  className={classes.button} onClick={()=>rateFilm(seen.id)}>Rate</Button></div>
             <Button variant="contained" color="secondary"  className={classes.deleteButton} startIcon={<DeleteIcon />} onClick={()=>removeFromSeen(seen.id)}>Remove</Button>
+            <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="error">
+                    Film Removed!
+                   </Alert>
+                  </Snackbar>
             </p>           
           </div>
         )

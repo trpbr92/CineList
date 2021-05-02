@@ -72,7 +72,7 @@ function FilmProfile(){
                     <img height={300} width={200} src={profile.poster_url} alt={profile.title}/>
                     <p>{profile.description}</p>
                     <div><Button variant="contained" color="primary" className={classes.button} onClick={()=>toWatchList(profile.id)}>Add to Watchlist</Button>
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
                     Added to Watchlist!
                    </Alert>
