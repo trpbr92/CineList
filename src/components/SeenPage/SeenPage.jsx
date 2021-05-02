@@ -67,8 +67,7 @@ function SeenPage(){
           <div key={seen.id}>
             <h3>{seen.title}</h3>
             <img height={300} width={200} src={seen.poster_url} alt={seen.title} onClick={()=>filmProfile(seen.id)}/>
-            <p>Your Rating: {seen.rating}/5</p>
-
+            <p><strong>Your Rating:</strong> {seen.rating}/5</p>
             <p>
             <FormControl className={classes.formControl}>
             <InputLabel id="rating">Rating</InputLabel>

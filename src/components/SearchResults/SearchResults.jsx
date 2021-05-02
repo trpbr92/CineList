@@ -24,8 +24,8 @@ function SearchResults() {
       {films.map(film => {
         return (
           <div key={film.id}>
-            <h3>{film.title}</h3>
             <img height={300} width={200} src={film.poster_url} alt={film.title} onClick={()=>filmProfile(film.id)}/>
+             <h3>{film.title}</h3>
           </div>
         )
       })}
